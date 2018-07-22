@@ -32,4 +32,9 @@ wget "https://github.com/justjanne/powerline-go/releases/download/v1.11.0/powerl
 echo "Setting as executable"
 chmod +x "$INSTALL_LOCATION/powerline-go-linux-amd64"
 
+if ! fc-list | grep -i "PowerlineSymbols" >/dev/null; then
+    echo -e "Ubuntu powerline font is missing. Using apt-get to install it:\n"
+    sudo apt-get install fonts-powerline
+fi
+
 echo -e "----------$GREEN Success $CLR_RESET----------\n"

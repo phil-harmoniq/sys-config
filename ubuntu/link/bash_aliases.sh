@@ -30,6 +30,6 @@ if [[ -f ~/.bash_aliases ]]; then
 fi
 
 echo "Creating ~/.bash_aliases symlink"
-ln $ALIASES_LOCATION ~
+ln "$ALIASES_LOCATION" ~
 
 echo -e "----------$GREEN Success $CLR_RESET----------\n"
