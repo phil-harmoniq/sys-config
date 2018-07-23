@@ -21,5 +21,11 @@ if [[ $answer != "y" ]] && [[ $answer != "Y" ]]; then
 fi
 
 if sudo nano /usr/share/glib-2.0/schemas/org.gnome.desktop.interface.gschema.xml; then
+    echo "Recompiling Glib schemas"
+    if ! sudo glib-compile-schemas /usr/share/glib-2.0/schemas; then
+        echo -e "----------$CLR_RED Failure Compiling Schemas $CLR_RESET----------\n"
+    fi
     echo -e "----------$CLR_YELLOW Success Requires Manual Verification $CLR_RESET----------\n"
+else
+    echo -e "----------$CLR_RED Failure Opening Glib Schema $CLR_RESET----------\n"
 fi
