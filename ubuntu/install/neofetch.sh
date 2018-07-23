@@ -11,5 +11,5 @@ echo -e "\n----------$CLR_CYAN $NAME $CLR_RESET----------"
 if sudo apt-get install neofetch -y; then
     echo -e "----------$CLR_GREEN Success $CLR_RESET----------\n"
 else
-    echo -e "----------$REN Failed $CLR_RESET----------\n"
+    echo -e "----------$CLR_RED Failed $CLR_RESET----------\n"
 fi

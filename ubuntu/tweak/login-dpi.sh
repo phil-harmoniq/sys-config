@@ -7,13 +7,13 @@ NAME="ubuntu/tweak/login-dpi.sh"
 [[ -z $CLR_RESET ]] && source "$SCRIPT_PATH/../import/console-colors.sh"
 
 echo -e "\n----------$CLR_CYAN $NAME $CLR_RESET----------"
-echo "Editing the login DPI must be done manualy in an editor and requires sudo access."
+echo "Editing the login screen DPI must be done manualy in an editor and requires $CLR_RED""$CLR_BOLD"'sudo'"$CLR_RESET privelege."
 echo -e "Find the following lines and edit the scaling default to your desired value:\n"
 
 echo '    <key name="scaling-factor" type="u">'
 echo -e '    <default>2</default>\n'
 
-read -rp "Would you like me to open this file in Nano? (y/n)" answer
+read -rp "Would you like me to open this file in Nano with $CLR_RED"'sudo'"$CLR_RESET"'? (y/n)' answer
 
 if [[ $answer != "y" ]] && [[ $answer != "Y" ]]; then
     echo -e "----------$CLR_RED User Aborted $CLR_RESET----------\n"
