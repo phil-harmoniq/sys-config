@@ -1,17 +1,17 @@
 # ~/.bash_aliases is sourced by ~/.bashrc
 
 # Colors from askubuntu.com
-reset=$(tput sgr0)
-bold=$(tput bold)
-black=$(tput setaf 0)
-red=$(tput setaf 1)
-green=$(tput setaf 2)
-yellow=$(tput setaf 3)
-blue=$(tput setaf 4)
-magenta=$(tput setaf 5)
-cyan=$(tput setaf 6)
-white=$(tput setaf 7)
-user_color=$blue
+CLR_RESET=$(tput sgr0)
+CLR_BOLD=$(tput bold)
+CLR_BLACK=$(tput setaf 0)
+CLR_RED=$(tput setaf 1)
+CLR_GREEN=$(tput setaf 2)
+CLR_YELLOW=$(tput setaf 3)
+CLR_BLUE=$(tput setaf 4)
+CLR_MAGENTA=$(tput setaf 5)
+CLR_CYAN=$(tput setaf 6)
+CLR_WHITE=$(tput setaf 7)
+USER_COLOR=$CLR_BLUE
 
 # User Prompt Style. Use powerline-go if installed, otherwise use ANSI prompt
 if [[ -f ~/.local/share/powerline-go/powerline-go-linux-amd64 ]] && [[ "$TERM" != "linux" ]]; then
@@ -21,7 +21,7 @@ if [[ -f ~/.local/share/powerline-go/powerline-go-linux-amd64 ]] && [[ "$TERM" !
     }
     PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
 else
-    PS1="\[$reset\]\[$cyan\][ \[$bold\]\[$user_color\]\u@\h\[$reset\]\[$green\] \w\[$cyan\] ]\[$reset\]\\$ "
+    PS1="\[$CLR_RESET\]\[$CLR_CYAN\][ \[$CLR_BOLD\]\[$USER_COLOR\]\u@\h\[$CLR_RESET\]\[$CLR_GREEN\] \w\[$CLR_CYAN\] ]\[$CLR_RESET\]\\$ "
 fi
 
 # Custom Aliases
@@ -42,3 +42,5 @@ fi
 
 # You may want to store any private environment variables in a seperate file
 [[ -f ~/.private_keys ]] && . ~/.private_keys
+
+if which neofetch >/dev/null; then neofetch; fi
