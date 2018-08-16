@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # ~/.bash_aliases is sourced by ~/.bashrc
 
 # Colors from askubuntu.com
@@ -16,12 +17,19 @@ USER_COLOR=$CLR_BLUE
 # User Prompt Style. Use powerline-go if installed, otherwise use ANSI prompt
 if [[ -f ~/.local/share/powerline-go/powerline-go-linux-amd64 ]] && [[ "$TERM" != "linux" ]]; then
     mods="docker,venv,user,host,ssh,cwd,perms,hg,jobs,exit,root"
-    function _update_ps1() {
+    function _update_ps1_powerline() {
         PS1="$(~/.local/share/powerline-go/powerline-go-linux-amd64 -modules $mods -colorize-hostname -error $?)"
     }
-    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+    PROMPT_COMMAND="_update_ps1_powerline; $PROMPT_COMMAND"
 else
-    PS1="\[$CLR_RESET\]\[$CLR_CYAN\][ \[$CLR_BOLD\]\[$USER_COLOR\]\u@\h\[$CLR_RESET\]\[$CLR_GREEN\] \w\[$CLR_CYAN\] ]\[$CLR_RESET\]\\$ "
+    function _update_ps1_custom() {
+        if [[ $? == 0 ]]; then
+            PS1="\[$CLR_RESET\]\[$CLR_CYAN\][ \[$CLR_BOLD\]\[$USER_COLOR\]\u@\h\[$CLR_RESET\]\[$CLR_GREEN\] \w\[$CLR_CYAN\] ]\[$CLR_RESET\]\\$ "
+        else
+            PS1="\[$CLR_RESET\]\[$CLR_RED\][ \[$CLR_BOLD\]\u@\h\[$CLR_RESET\]\[$CLR_GREEN\] \w\[$CLR_RED\] ]\[$CLR_RESET\]\\$ "
+        fi
+    }
+    PROMPT_COMMAND="_update_ps1_custom; $PROMPT_COMMAND"
 fi
 
 # Custom Aliases
