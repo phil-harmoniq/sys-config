@@ -3,7 +3,7 @@
 set -e
 SCRIPT_PATH="$( cd "$(dirname "$0")" ; pwd -P )"
 CONFIG_PATH="$( cd "$(dirname "$SCRIPT_PATH/../../")" ; pwd -P )"
-echo $CONFIG_PATH
+echo "$CONFIG_PATH"
 NAME="ubuntu/link/sys-config.sh"
 [[ -z $CLR_RESET ]] && source "$SCRIPT_PATH/../import/console-colors.sh"
 
