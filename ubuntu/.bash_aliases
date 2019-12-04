@@ -33,8 +33,8 @@ else
 fi
 
 # Custom Aliases
-alias lsl='ls -lhF'
-alias lsa='ls -lhaF'
+alias ll='ls -lhF --color=auto'
+alias la='ls -lhaF --color=auto'
 alias sys-update='sudo apt update && sudo apt upgrade -y'
 alias clear-crash-log='sudo rm /var/crash/*'
 
